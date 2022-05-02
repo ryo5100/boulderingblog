@@ -11,18 +11,23 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
-    
-    <body>
+        <body>
         <p>{{ Auth::user()->name }}</p>
         <h1>Blog Name</h1>
         <p class='create'>[<a href='/posts/create'>新規作成</a>]</p>
+       
         <div class='posts'>
+             
             @foreach ($posts as $post)
+            <small>{{ $post->user->name }}</small>
             <div class='post'>
+                
                 <h2 class='title'>
                     <a href='/posts/{{ $post->id }}'>{{ $post->title }}</a>
                 </h2>
+                 
                 <p class='body'>{{ $post->body }} </p>
+                
             </div>
             @endforeach
         </div>

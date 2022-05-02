@@ -13,9 +13,10 @@
     </head>
      
     <body>
+      
         <p>{{Auth::user()->name}} </p>
         <h1>Blog Name</h1>
-        <form action='/posts'method='POST'>
+        <form action='/posts'method='POST'enctype='multipart/form-data'>
           {{ csrf_field() }}
           <div class='title'>
             <h2>Title</h2>
@@ -24,11 +25,16 @@
             </div>
           <div class='body'>
             <h2>Body</h2>
-            <textarea name='post[body]' placeholder='今日も一日お疲れさまでした。' value='{{ old('post.body') }}'></textarea>
+            <textarea name='post[body]' placeholder='今日も一日お疲れさまでした。' value='{{ old('post.body') }}　'></textarea>
             <p class='body_error' style='color:red'>{{ $errors->first('post.body') }}</p>
           </div>
+          <p>
+          <input type='file' name='image'>
+       　  </p>  
           <input type='submit' value='保存'>
+          
         </form>
+        
         <div class='back'>[<a href='/'>back]</a></div>
     </body>
 </html>
